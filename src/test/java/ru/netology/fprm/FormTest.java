@@ -22,7 +22,6 @@ public class FormTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        options.addArguments("--allowed-ips");
         driver = new ChromeDriver(options);
 
     }
