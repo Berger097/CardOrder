@@ -37,8 +37,8 @@ public class FormTest {
         driver.get("http://0.0.0.0:9999/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
-        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
-        driver.findElement(By.cssSelector("[data-test-id=submit]")).click();
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("[data-test-id='submit']")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='callback-success']")).getText();
         String expected = "Ваша заявка успешно отправлена!";
         Assertions.assertEquals(expected, text.trim());
