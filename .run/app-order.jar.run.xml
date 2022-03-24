@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="app-order.jar" type="JarApplication" singleton="false">
-    <option name="JAR_PATH" value="$PROJECT_DIR$/artifacts/app-order.jar" />
-    <option name="ALTERNATIVE_JRE_PATH" />
-    <module name="CardOrder" />
-    <method v="2" />
-  </configuration>
-</component>
