@@ -38,7 +38,7 @@ public class FormTest {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.cssSelector("[type='button']")).click();
+        driver.findElement(By.cssSelector("button")).click();
         String text = driver.findElement(By.className(".alert-success")).getText();
         String expected = "Ваша заявка успешно отправлена!";
         Assertions.assertEquals(expected, text.trim());
