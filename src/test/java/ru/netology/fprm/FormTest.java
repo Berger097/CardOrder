@@ -40,7 +40,7 @@ public class FormTest {
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         String text = driver.findElement(By.className("paragraph")).getText();
-        String expected = "Ваша заявка успешно отправлена!";
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         Assertions.assertEquals(expected, text.trim());
 
 
