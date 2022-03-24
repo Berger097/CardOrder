@@ -7,21 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.sql.Driver;
-
-import static org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.Conversions.trim;
-
 public class FormTest {
-   private WebDriver driver;
-
-
-
+    private WebDriver driver;
 
     @BeforeAll
-    public static void  setUpAll() {
-       WebDriverManager.chromedriver().setup();
+    public static void setUpAll() {
+        WebDriverManager.chromedriver().setup();
 
     }
+
     @BeforeEach
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
@@ -31,6 +25,7 @@ public class FormTest {
         driver = new ChromeDriver(options);
 
     }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
@@ -47,7 +42,6 @@ public class FormTest {
         String text = driver.findElement(By.cssSelector("[data-test-id='callback-success']")).getText();
         String expected = "Ваша заявка успешно отправлена!";
         Assertions.assertEquals(expected, text.trim());
-
 
 
     }
