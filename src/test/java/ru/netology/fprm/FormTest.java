@@ -1,18 +1,20 @@
 package ru.netology.fprm;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.sql.Driver;
+
+import static org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.Conversions.trim;
+
 public class FormTest {
    private WebDriver driver;
 
-    ChromeOptions options = new ChromeOptions();
+
 
 
     @BeforeAll
@@ -22,6 +24,7 @@ public class FormTest {
     }
     @BeforeEach
     public void setUp() {
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
@@ -36,7 +39,17 @@ public class FormTest {
 
     @Test
     void test() {
-        // Your test logic here
+        driver.get("http://0.0.0.0:9999/");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
+        driver.findElement(By.cssSelector("[data-test-id=submit]")).click();
+        String text = driver.findElement(By.cssSelector("[data-test-id='callback-success']")).getText();
+        String expected = "Ваша заявка успешно отправлена!";
+        Assertions.assertEquals(expected, text.trim());
+
+
+
     }
 
 }
