@@ -53,6 +53,8 @@ public class FormTest {
     @Test
     void invalidFieldName() {
         driver.get("http://0.0.0.0:7777/");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         String text = driver.findElement(By.cssSelector(".input__sub")).getText();
         String expected = "Поле обязательно для заполнения";
@@ -62,18 +64,22 @@ public class FormTest {
     @Test
     void invalidFieldName2() {
         driver.get("http://0.0.0.0:7777/");
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("andrei");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         List<WebElement> elements = driver.findElements(By.cssSelector(".input__sub"));
         String text = elements.get(0).getText();
-        String expected = "Укажите точно как в паспорте";
+        String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
         Assertions.assertEquals(expected, text);
 
     }
     @Test
     void invalidFieldPhone() {
         driver.get("http://0.0.0.0:7777/");
+
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         List<WebElement> elements = driver.findElements(By.cssSelector(".input__sub"));
         String text = elements.get(1).getText();
@@ -86,6 +92,7 @@ public class FormTest {
         driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7(999) 470-21-21");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         List<WebElement> elements = driver.findElements(By.cssSelector(".input__sub"));
         String text = elements.get(1).getText();
