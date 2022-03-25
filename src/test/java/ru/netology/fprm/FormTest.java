@@ -14,20 +14,17 @@ import java.util.List;
 public class FormTest {
     private WebDriver driver;
 
-    @BeforeAll
-    public static void setUpAll() {
-        WebDriverManager.chromedriver().setup();
 
-    }
 
     @BeforeEach
     public void setUp() {
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        driver.get("http://0.0.0.0:7777/");
+
 
     }
 
@@ -39,6 +36,7 @@ public class FormTest {
 
     @Test
     void test() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -52,6 +50,7 @@ public class FormTest {
 
     @Test
     void invalidFieldName() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
@@ -62,6 +61,7 @@ public class FormTest {
     }
     @Test
     void invalidFieldName2() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("andrei");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -73,6 +73,7 @@ public class FormTest {
     }
     @Test
     void invalidFieldPhone() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
@@ -83,6 +84,7 @@ public class FormTest {
     }
     @Test
     void invalidFieldPhone2() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7(999) 470-21-21");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -94,6 +96,7 @@ public class FormTest {
     }
     @Test
     void checkboxNotChecked() {
+        driver.get("http://0.0.0.0:7777/");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Елена");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79994702121");
         driver.findElement(By.cssSelector("button")).click();
